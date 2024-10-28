@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <title>site de Gubeton</title>
+    <link rel="stylesheet" href="style-base.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Gubeton</title>
+    <style>
+      .premier-style {
+        text-align: center;
+        font-size: 30px;
+        font-family: Arial;
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(121,78,9,1) 35%, rgba(255,217,0,1) 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    </style>
+  
   </head>
   <body>
     <main>
-        <h1>Bienvenue chez Gubeton</h1>  
-        <h2>/!\ travaux /!\</h2>
+        <h1 style="text-align: center;font-size: 50px; font-family: Arial;">Bienvenue chez Gubeton</h1>  
+        <h2 class="premier-style">/!\ travaux /!\</h2>
         <button href="page-test.html">Vers la page Test</button>
-        <button href="compteur.html">Vers le compteur</button>
+        <a href="compteur.html"><button>Vers le compteur</button></a>
+
     </main>
   </body>
 </html>
