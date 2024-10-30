@@ -29,7 +29,7 @@
     <script>
         let os = 0;
         let squelette = 0;
-        setInterval(autoHarvest, 1000)
+        setInterval(autoHarvest, 500)
 
         function harvest() {
             os += 10;
@@ -49,7 +49,8 @@
 
         function autoHarvest() {
             if (squelette > 0) {
-                os =+ 1;
+                os += squelette;
+                document.getElementById("ossements").textContent = `${os} os`;
             } else {
                 return
             }
