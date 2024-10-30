@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="ressources/style-base.css" rel="icon" type="image/x-icon" href="ressources/bourdon.ico">
+    <link rel="stylesheet" href="ressources/style-base.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skeleton Army</title>
@@ -40,7 +40,8 @@
             if (os >= 206) {
                 squelette += 1; 
                 os -= 206;
-                document.getElementById("squelette").textContent = `${squelette} squelettes`;
+                const squeletteText = squelette === 1 ? 'squelette' : 'squelettes';
+                document.getElementById("squelette").textContent = `${squelette} ${squeletteText}`;
                 document.getElementById("ossements").textContent = `${os} os`;
             } else {
                 alert("Il me faut plus d'os !");
