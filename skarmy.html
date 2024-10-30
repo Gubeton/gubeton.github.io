@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="ressources/style-base.css" rel="icon" type="image/x-icon" href="ressources/bourdon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skeleton Army</title>
+    <style>
+        .premier-bouton {
+            text-align: center;
+            font-size:40px;
+            font-family: Arial;
+            background-color: darkred;
+            color: bisque;
+            height: 200px; width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="index.html"><button>Vers l'index</button></a>
+    <br><br><br>
+    
+    <button class="premier-bouton" id="ossements" onclick="harvest()">Récupérer des os</button>
+    <br><br>
+    <button class="premier-bouton" id="squelette" onclick="rise()">Créer un squelette</button>
+  
+
+    <script>
+        let os = 0;
+        let squelette = 0;
+        setInterval(autoHarvest, 1000)
+
+        function harvest() {
+            os += 10;
+            document.getElementById("ossements").textContent = `${os} os`;
+        }
+
+        function rise() {
+            if (os >= 206) {
+                squelette += 1; 
+                os -= 206;
+                document.getElementById("squelette").textContent = `${squelette} squelettes`;
+                document.getElementById("ossements").textContent = `${os} os`;
+            } else {
+                alert("Il me faut plus d'os !");
+            }
+        }
+
+        function autoHarvest() {
+            if (squelette > 0) {
+                os =+ 1;
+            } else {
+                return
+            }
+        }
+    </script>
+</body> 
