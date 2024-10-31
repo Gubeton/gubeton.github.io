@@ -8,11 +8,11 @@
     <style>
         .premier-bouton {
             text-align: center;
-            font-size:30px;
+            font-size: 15px;
             font-family: Arial;
             background-color: rgb(80, 86, 90);
             color: rgb(234, 234, 236);
-            height: 100px; width: 200px;
+            height: 50px; width: 200px; margin: 10px;
         }
 
     </style>
@@ -21,40 +21,32 @@
     <a href="index.html"><button>Vers l'index</button></a>
     <br><br><br>
     
-    <button class="premier-bouton" id="ossements" onclick="harvest()">Récupérer des os</button>
-    <br><br>
-    <button class="premier-bouton" id="squelette" onclick="rise()">Créer un squelette</button>
+    <button class="premier-bouton" id="bouton-sable" onclick="harvest('sable')">Récupérer du sable</button>
+    <button class="premier-bouton" id="bouton-gravier" onclick="harvest('gravier')">Récupérer du gravier</button>
+    <button class="premier-bouton" id="bouton-eau" onclick="harvest('eau')">Récupérer de l'eau</button>
+    <button class="premier-bouton" id="bouton-argile" onclick="harvest('argile')">Récupérer de l'argile</button>
+    <button class="premier-bouton" id="bouton-calcaire" onclick="harvest('calcaire')">Récupérer du calcaire</button>
   
 
     <script>
-        let os = 0;
-        let squelette = 0;
-        setInterval(autoHarvest, 500)
-
-        function harvest() {
-            os += 10;
-            document.getElementById("ossements").textContent = `${os} os`;
+        const ressources = {
+            sable: 0,
+            gravier: 0,
+            eau: 0,
+            argile: 0,
+            calcaire: 0,
+            
         }
 
-        function rise() {
-            if (os >= 206) {
-                squelette += 1; 
-                os -= 206;
-                const squeletteText = squelette === 1 ? 'squelette' : 'squelettes';
-                document.getElementById("squelette").textContent = `${squelette} ${squeletteText} &#128128`;
-                document.getElementById("ossements").textContent = `${os} os`;
-            } else {
-                alert("Il me faut plus d'os !");
-            }
+        function harvest(material) {
+            ressources[material] += 10;
+            const unité = material === 'eau' ? 'L':'Kg';
+            const préposition = material === 'eau' || material === 'argile' ? "d'" : 'de ';
+            document.getElementById("bouton-"+material).textContent = `${ressources[material]}${unité} ${préposition}${material}`;
         }
 
-        function autoHarvest() {
-            if (squelette > 0) {
-                os += squelette;
-                document.getElementById("ossements").textContent = `${os} os`;
-            } else {
-                return
-            }
-        }
+        
+
+    
     </script>
 </body> 
