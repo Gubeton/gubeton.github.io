@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industrie de béton</title>
     <style>
-        .premier-bouton {
+        .un-bouton {
             text-align: center;
             font-size: 15px;
             font-family: Arial;
@@ -15,38 +15,90 @@
             height: 50px; width: 200px; margin: 10px;
         }
 
+        .deux-bouton {
+            text-align: center;
+            font-size: 15px;
+            font-family: Arial;
+            background-color: rgb(10, 17, 22);
+            color: rgb(234, 234, 236);
+            height: 50px; width: 200px; margin: 10px;
+        }
+
     </style>
 </head>
 <body>
     <a href="index.html"><button>Vers l'index</button></a>
+    <a id="argent" style="position:absolute; top: 10px; right: 10px; font-size: 18px; font-weight: bold; color: green;">Argent = 1000</a>
     <br><br><br>
-    
-    <button class="premier-bouton" id="bouton-sable" onclick="harvest('sable')">Récupérer du sable</button>
-    <button class="premier-bouton" id="bouton-gravier" onclick="harvest('gravier')">Récupérer du gravier</button>
-    <button class="premier-bouton" id="bouton-eau" onclick="harvest('eau')">Récupérer de l'eau</button>
-    <button class="premier-bouton" id="bouton-argile" onclick="harvest('argile')">Récupérer de l'argile</button>
-    <button class="premier-bouton" id="bouton-calcaire" onclick="harvest('calcaire')">Récupérer du calcaire</button>
+    <button class="un-bouton" id="bouton-sable" onclick="harvest('sable')">Récupérer du sable</button>
+    <button class="un-bouton" id="bouton-gravier" onclick="harvest('gravier')">Récupérer du gravier</button>
+    <button class="un-bouton" id="bouton-eau" onclick="harvest('eau')">Récupérer de l'eau</button>
+    <button class="un-bouton" id="bouton-argile" onclick="harvest('argile')">Récupérer de l'argile</button>
+    <button class="un-bouton" id="bouton-calcaire" onclick="harvest('calcaire')">Récupérer du calcaire</button>
+    <br><br> 
+    <button class="deux-bouton" id="bouton-camsable" onclick="truck('camsable', 'sable')">Acheter un camion pour du sable</button>
+    <button class="deux-bouton" id="bouton-camgravier" onclick="truck('camgravier', 'gravier')">Acheter un camion pour du gravier</button>
+    <button class="deux-bouton" id="bouton-cameau" onclick="truck('cameau', 'eau')">Acheter un camion pour de l'eau</button>
+    <button class="deux-bouton" id="bouton-camargile" onclick="truck('camargile', 'argile')">Acheter un camion pour de l'argile</button>
+    <button class="deux-bouton" id="bouton-camcalcaire" onclick="truck('camcalcaire', 'calcaire')">Acheter un camion pour du calcaire</button>
+
   
 
     <script>
+        let argent = 1000;
+
         const ressources = {
             sable: 0,
             gravier: 0,
             eau: 0,
             argile: 0,
             calcaire: 0,
-            
         }
+        const vehicule = {
+            camsable : 0,
+            camgravier :0,
+            cameau: 0,
+            camargile: 0,
+            camcalcaire: 0,
+        }
+        setInterval(autoHarvest, 500);
 
         function harvest(material) {
             ressources[material] += 10;
+            updateButton1(material);
+        }
+
+        function truck(cam, material) {
+            if (argent > 100) {
+                vehicule[cam] += 1;
+                argent -= 100;
+                updateButton2(cam, material);
+            }
+        }
+
+        function autoHarvest() {
+            for(const material in ressources) {
+                const nomCamion = "cam" + material
+                if (vehicule[nomCamion]>0){
+                    ressources[material] += vehicule[nomCamion];
+                    updateButton1(material);
+                } else {
+                    return
+                }
+            }
+        }
+        
+        function updateButton1(material) {
             const unité = material === 'eau' ? 'L':'Kg';
             const préposition = material === 'eau' || material === 'argile' ? "d'" : 'de ';
             document.getElementById("bouton-"+material).textContent = `${ressources[material]}${unité} ${préposition}${material}`;
         }
 
-        
-
+        function updateButton2(cam, material) {
+            const préposition = material === 'eau' || material === 'argile' ? "d'" : 'de ';
+            document.getElementById("bouton-"+cam).textContent = `${vehicule[cam]} camion ${préposition}${material}`;
+        }
+    
     
     </script>
 </body> 
