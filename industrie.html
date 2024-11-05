@@ -25,36 +25,56 @@
             height: 50px; width: 200px; margin: 10px;
         }
 
+        .trois-bouton {
+            text-align: center;
+            font-size: 120x;
+            font-family: Arial;
+            background-color: rgb(61, 6, 14);
+            color: rgb(233, 189, 188);
+            height: 50px; width: 200px; margin: 10px;
+        }
+
     </style>
 </head>
 <body>
     <a href="index.html"><button>Vers l'index</button></a>
-    <a id="sommeArgent" style="position:absolute; top: 10px; right: 10px; font-size: 18px; font-weight: bold; color: green;">Argent = 1000</a>
+    <a id="sommeArgent" style="position:absolute; top: 10px; right: 10px; font-size: 28px; font-weight: bold; color: green;">Argent = 1000</a>
     <br><br><br>
-    <button class="un-bouton" id="bouton-sable" onclick="harvest('sable')">Récupérer du sable</button>
-    <button class="un-bouton" id="bouton-gravier" onclick="harvest('gravier')">Récupérer du gravier</button>
-    <button class="un-bouton" id="bouton-eau" onclick="harvest('eau')">Récupérer de l'eau</button>
-    <button class="un-bouton" id="bouton-argile" onclick="harvest('argile')">Récupérer de l'argile</button>
-    <button class="un-bouton" id="bouton-calcaire" onclick="harvest('calcaire')">Récupérer du calcaire</button>
+    <button class="un-bouton" id="bouton-sable" onclick="harvest('sable')" title="Récupère 10Kg de sable">Récupérer du sable</button>
+    <button class="un-bouton" id="bouton-gravier" onclick="harvest('gravier')" title="Récupère 10Kg de gravier">Récupérer du gravier</button>
+    <button class="un-bouton" id="bouton-eau" onclick="harvest('eau')" title="Récupère 10L d'eau">Récupérer de l'eau</button>
+    <button class="un-bouton" id="bouton-argile" onclick="harvest('argile')" title="Récupère 10Kg d'argile">Récupérer de l'argile</button>
+    <button class="un-bouton" id="bouton-calcaire" onclick="harvest('calcaire')" title="Récupère 10Kg de calcaire">Récupérer du calcaire</button>
     <br><br> 
-    <button class="deux-bouton" id="bouton-camsable" onclick="truck('camsable', 'sable')">Acheter un camion pour du sable</button>
-    <button class="deux-bouton" id="bouton-camgravier" onclick="truck('camgravier', 'gravier')">Acheter un camion pour du gravier</button>
-    <button class="deux-bouton" id="bouton-cameau" onclick="truck('cameau', 'eau')">Acheter un camion pour de l'eau</button>
-    <button class="deux-bouton" id="bouton-camargile" onclick="truck('camargile', 'argile')">Acheter un camion pour de l'argile</button>
-    <button class="deux-bouton" id="bouton-camcalcaire" onclick="truck('camcalcaire', 'calcaire')">Acheter un camion pour du calcaire</button>
-
+    <button class="deux-bouton" id="bouton-camsable" onclick="truck('camsable', 'sable')" title="Embauche un camionneur qui récupère 2kg de sable par seconde">Acheter un camion pour du sable</button>
+    <button class="deux-bouton" id="bouton-camgravier" onclick="truck('camgravier', 'gravier')" title="Embauche un camionneur qui récupère 2kg de gravier par seconde">Acheter un camion pour du gravier</button>
+    <button class="deux-bouton" id="bouton-cameau" onclick="truck('cameau', 'eau')" title="Embauche un camionneur qui récupère 2L d'eau par seconde">Acheter un camion citerne pour de l'eau</button>
+    <button class="deux-bouton" id="bouton-camargile" onclick="truck('camargile', 'argile')" title="Embauche un camionneur qui récupère 2kg d'argile">Acheter un camion pour de l'argile</button>
+    <button class="deux-bouton" id="bouton-camcalcaire" onclick="truck('camcalcaire', 'calcaire')" title="Embauche un camionneur qui récupère 2kg de calcaire par seconde">Acheter un camion pour du calcaire</button>
+    <br><br> 
+    
+    <button class="trois-bouton" id="bouton-ciment" onclick="craftCement" title="Consomme XKg d'argile et Xkg de calcaire pour faire Xkg de ciment">Fabriquer du ciment</button>
+    <button class="trois-bouton" id="bouton-beton" onclick="craftBeton" title="Consomme Xkg de ciment, Xkg de sable, Xkg de gravier et XL d'eau pour faire 1m3 de béton">Fabriquer du béton</button>
+    
   
 
     <script>
-        let argent = 1000;
-
-        const ressources = {
+        let cheat = 100
+        let argent = (1000 * cheat);
+        
+        const ressourcesBase = {
             sable: 0,
             gravier: 0,
             eau: 0,
             argile: 0,
             calcaire: 0,
         }
+
+        const ressourcesAvanc = {
+            ciment:  0,
+            beton: 0,
+        }
+
         const vehicule = {
             camsable : 0,
             camgravier :0,
@@ -62,16 +82,18 @@
             camargile: 0,
             camcalcaire: 0,
         }
+
+
         setInterval(autoHarvest, 500);
 
         function harvest(material) {
-            ressources[material] += 10;
+            ressourcesBase[material] += (10 * cheat);
             updateButton1(material);
         }
 
         function truck(cam, material) {
             if (argent > 100) {
-                vehicule[cam] += 1;
+                vehicule[cam] += (1 * cheat);
                 argent -= 100;
                 updateButton2(cam, material);
                 document.getElementById("sommeArgent").textContent = `Argent =${argent}`;
@@ -79,10 +101,10 @@
         }
 
         function autoHarvest() {
-            for(const material in ressources) {
+            for(const material in ressourcesBase) {
                 const nomCamion = "cam" + material
                 if (vehicule[nomCamion]>0){
-                    ressources[material] += vehicule[nomCamion];
+                    ressourcesBase[material] += vehicule[nomCamion];
                     updateButton1(material);
                 } else {
                     return
@@ -90,15 +112,39 @@
             }
         }
         
+        
+        function craftCement() {
+            if ((ressourcesBase[argile] > 100) && (ressources[calcaire] > 100)) {
+                ressourcesBase[argile] -= 100
+                ressourcesBase[calcaire] -= 100
+                ressourcesAvanc[ciment] += 200
+                updateButton1('argile')
+                updateButton1('calcaire')
+                updateButton3('ciment')
+            } else {
+                return
+            }
+        }
+
+        //function craftBeton
+
+
+        
+        
         function updateButton1(material) {
             const unité = material === 'eau' ? 'L':'Kg';
             const préposition = material === 'eau' || material === 'argile' ? "d'" : 'de ';
-            document.getElementById("bouton-"+material).textContent = `${ressources[material]}${unité} ${préposition}${material}`;
+            document.getElementById("bouton-"+material).textContent = `${ressourcesBase[material]}${unité} ${préposition}${material}`;
         }
 
         function updateButton2(cam, material) {
             const préposition = material === 'eau' || material === 'argile' ? "d'" : 'de ';
             document.getElementById("bouton-"+cam).textContent = `${vehicule[cam]} camion ${préposition}${material}`;
+        }
+
+        function updateButton3(material) {
+            const unité = material === 'beton' ? "mètre cube" : 'kg';
+            document.getElementById("bouton-"+material).textContent = `${ressourcesAvanc[material]} ${unité} de ${material}`;
         }
     
     
