@@ -7,7 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industrie de béton</title>
     <style>
-        .un-bouton {
+        .bouton-desac {
+            text-align: center;
+            font-size: 15px;
+            font-family: Arial;
+            background-color: rgb(118, 124, 128);
+            color: rgb(143, 143, 160);
+            height: 50px; width: 200px; margin: 10px;
+
+        }
+
+        .bouton-un {
             text-align: center;
             font-size: 15px;
             font-family: Arial;
@@ -16,7 +26,7 @@
             height: 50px; width: 200px; margin: 10px;
         }
 
-        .deux-bouton {
+        .bouton-deux {
             text-align: center;
             font-size: 15px;
             font-family: Arial;
@@ -25,7 +35,7 @@
             height: 50px; width: 200px; margin: 10px;
         }
 
-        .trois-bouton {
+        .bouton-trois {
             text-align: center;
             font-size: 120x;
             font-family: Arial;
@@ -40,29 +50,29 @@
     <a href="index.html"><button>Vers l'index</button></a>
     <a id="sommeArgent" style="position:absolute; top: 10px; right: 10px; font-size: 28px; font-weight: bold; color: green;">Argent = 1000</a>
     <br><br><br>
-    <button class="un-bouton" id="bouton-sable" onclick="harvest('sable')" title="Récupère 10Kg de sable">Récupérer du sable</button>
-    <button class="un-bouton" id="bouton-gravier" onclick="harvest('gravier')" title="Récupère 10Kg de gravier">Récupérer du gravier</button>
-    <button class="un-bouton" id="bouton-eau" onclick="harvest('eau')" title="Récupère 10L d'eau">Récupérer de l'eau</button>
-    <button class="un-bouton" id="bouton-argile" onclick="harvest('argile')" title="Récupère 10Kg d'argile">Récupérer de l'argile</button>
-    <button class="un-bouton" id="bouton-calcaire" onclick="harvest('calcaire')" title="Récupère 10Kg de calcaire">Récupérer du calcaire</button>
+    <button class="bouton-un" id="bouton-sable" onclick="harvest('sable')" title="Récupère 10Kg de sable">Récupérer du sable</button>
+    <button class="bouton-un" id="bouton-gravier" onclick="harvest('gravier')" title="Récupère 10Kg de gravier">Récupérer du gravier</button>
+    <button class="bouton-un" id="bouton-eau" onclick="harvest('eau')" title="Récupère 10L d'eau">Récupérer de l'eau</button>
+    <button class="bouton-un" id="bouton-argile" onclick="harvest('argile')" title="Récupère 10Kg d'argile">Récupérer de l'argile</button>
+    <button class="bouton-un" id="bouton-calcaire" onclick="harvest('calcaire')" title="Récupère 10Kg de calcaire">Récupérer du calcaire</button>
     <br><br> 
-    <button class="deux-bouton" id="bouton-camsable" onclick="truck('camsable', 'sable')" title="Embauche un camionneur qui récupère 2kg de sable par seconde">Acheter un camion pour du sable</button>
-    <button class="deux-bouton" id="bouton-camgravier" onclick="truck('camgravier', 'gravier')" title="Embauche un camionneur qui récupère 2kg de gravier par seconde">Acheter un camion pour du gravier</button>
-    <button class="deux-bouton" id="bouton-cameau" onclick="truck('cameau', 'eau')" title="Embauche un camionneur qui récupère 2L d'eau par seconde">Acheter un camion citerne pour de l'eau</button>
-    <button class="deux-bouton" id="bouton-camargile" onclick="truck('camargile', 'argile')" title="Embauche un camionneur qui récupère 2kg d'argile">Acheter un camion pour de l'argile</button>
-    <button class="deux-bouton" id="bouton-camcalcaire" onclick="truck('camcalcaire', 'calcaire')" title="Embauche un camionneur qui récupère 2kg de calcaire par seconde">Acheter un camion pour du calcaire</button>
+    <button class="bouton-deux" id="bouton-camsable" onclick="truck('camsable', 'sable')" title="Embauche un camionneur qui récupère 2kg de sable par seconde">Acheter un camion pour du sable</button>
+    <button class="bouton-deux" id="bouton-camgravier" onclick="truck('camgravier', 'gravier')" title="Embauche un camionneur qui récupère 2kg de gravier par seconde">Acheter un camion pour du gravier</button>
+    <button class="bouton-deux" id="bouton-cameau" onclick="truck('cameau', 'eau')" title="Embauche un camionneur qui récupère 2L d'eau par seconde">Acheter un camion citerne pour de l'eau</button>
+    <button class="bouton-deux" id="bouton-camargile" onclick="truck('camargile', 'argile')" title="Embauche un camionneur qui récupère 2kg d'argile">Acheter un camion pour de l'argile</button>
+    <button class="bouton-deux" id="bouton-camcalcaire" onclick="truck('camcalcaire', 'calcaire')" title="Embauche un camionneur qui récupère 2kg de calcaire par seconde">Acheter un camion pour du calcaire</button>
     <br><br> 
-    
-    <button class="trois-bouton" id="bouton-ciment" onclick="craftCement" title="Consomme XKg d'argile et Xkg de calcaire pour faire Xkg de ciment">Fabriquer du ciment</button>
-    <button class="trois-bouton" id="bouton-beton" onclick="craftBeton" title="Consomme Xkg de ciment, Xkg de sable, Xkg de gravier et XL d'eau pour faire 1m3 de béton">Fabriquer du béton</button>
-    
+    <button class="bouton-desac" id="bouton-ciment" onclick="craftCement()" title="Consomme XKg d'argile et Xkg de calcaire pour faire Xkg de ciment">Fabriquer du ciment</button>
+    <button class="bouton-desac" id="bouton-beton" onclick="craftBeton()" title="Consomme Xkg de ciment, Xkg de sable, Xkg de gravier et XL d'eau pour faire 1m3 de béton">Fabriquer du béton</button>
+    <br><br><br><br><br>
+    <button class="bouton-trois" id="bouton-test" onclick="enoughMat('ciment')" title="bouton de test pour vérifier les recettes">Ca marche ?</button>
   
 
     <script>
         let cheat = 100
         let argent = (1000 * cheat);
         
-        const ressourcesBase = {
+        const ressourceBase = {
             sable: 0,
             gravier: 0,
             eau: 0,
@@ -70,7 +80,7 @@
             calcaire: 0,
         }
 
-        const ressourcesAvanc = {
+        const ressourceAvanc = {
             ciment:  0,
             beton: 0,
         }
@@ -83,12 +93,38 @@
             camcalcaire: 0,
         }
 
+        const recette = {
+            ciment : {
+                calcaire: 100,
+                argile : 100,
+            },
+
+            beton : {
+                eau: 170,
+                sable: 750,
+                gravier: 1100,
+                ciment: 350,
+            }
+        }
 
         setInterval(autoHarvest, 500);
+        setInterval(buttonsChecker, 100);
 
         function harvest(material) {
-            ressourcesBase[material] += (10 * cheat);
+            ressourceBase[material] += (10 * cheat);
             updateButton1(material);
+        }
+
+        function enoughMat(produit) {
+            console.log("le bouton marche")
+            for (let materiau in recette[produit]) {
+                if (recette[produit[materiau]] > ressourceBase[materiau]) {
+                    console.log("pas assez !")
+                    return false;
+                }
+            }
+            console.log("OUI ca marche")
+            return true;
         }
 
         function truck(cam, material) {
@@ -101,10 +137,10 @@
         }
 
         function autoHarvest() {
-            for(const material in ressourcesBase) {
+            for(const material in ressourceBase) {
                 const nomCamion = "cam" + material
                 if (vehicule[nomCamion]>0){
-                    ressourcesBase[material] += vehicule[nomCamion];
+                    ressourceBase[material] += vehicule[nomCamion];
                     updateButton1(material);
                 } else {
                     return
@@ -112,12 +148,11 @@
             }
         }
         
-        
         function craftCement() {
-            if ((ressourcesBase[argile] > 100) && (ressources[calcaire] > 100)) {
-                ressourcesBase[argile] -= 100
-                ressourcesBase[calcaire] -= 100
-                ressourcesAvanc[ciment] += 200
+            if ((ressourceBase['argile'] >= 100) && (ressourceBase['calcaire'] >= 100)) {
+                ressourceBase['argile'] -= 100
+                ressourceBase['calcaire'] -= 100
+                ressourceAvanc['ciment'] += 200
                 updateButton1('argile')
                 updateButton1('calcaire')
                 updateButton3('ciment')
@@ -126,15 +161,32 @@
             }
         }
 
-        //function craftBeton
+        function craftBeton() {
+            if ((ressourceAvanc['ciment'] >= 350) && (ressourceBase['eau'] >= 170) && (ressourceBase['sable'] >= 750) && (ressourceBase['gravier'] >= 1100)){
+                ressourceBase['eau'] -= 170
+                ressourceBase['sable'] -= 750
+                ressourceBase['gravier'] -= 1100
+                ressourceAvanc['ciment'] -= 350
+                ressourceAvanc['ciment'] += 1
+                updateButton1('eau')
+                updateButton1('sable')
+                updateButton1('gravier')
+                updateButton3('ciment')
+                updateButton3('beton')
+            } else {
+                return
+            }
+        }
 
-
-        
+        function buttonsChecker() {
+            (ressourceBase['argile'] >= 100 && ressourceBase['calcaire'] >= 100) ? (document.getElementById("bouton-ciment").disabled = false, document.getElementById("bouton-ciment").classList.add("bouton-trois")) : (document.getElementById("bouton-ciment").disabled = true, document.getElementById("bouton-ciment").classList.remove("bouton-trois"));
+            (ressourceBase['argile'] >= 100 && ressourceBase['calcaire'] >= 100) ? (document.getElementById("bouton-ciment").disabled = false, document.getElementById("bouton-ciment").classList.add("bouton-trois")) : (document.getElementById("bouton-ciment").disabled = true, document.getElementById("bouton-ciment").classList.remove("bouton-trois"));
+        }        
         
         function updateButton1(material) {
             const unité = material === 'eau' ? 'L':'Kg';
             const préposition = material === 'eau' || material === 'argile' ? "d'" : 'de ';
-            document.getElementById("bouton-"+material).textContent = `${ressourcesBase[material]}${unité} ${préposition}${material}`;
+            document.getElementById("bouton-"+material).textContent = `${ressourceBase[material]}${unité} ${préposition}${material}`;
         }
 
         function updateButton2(cam, material) {
@@ -143,8 +195,8 @@
         }
 
         function updateButton3(material) {
-            const unité = material === 'beton' ? "mètre cube" : 'kg';
-            document.getElementById("bouton-"+material).textContent = `${ressourcesAvanc[material]} ${unité} de ${material}`;
+            const unité = material === 'beton' ? " mètre cube" : 'Kg';
+            document.getElementById("bouton-"+material).textContent = `${ressourceAvanc[material]}${unité} de ${material}`;
         }
     
     
