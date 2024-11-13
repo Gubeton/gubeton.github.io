@@ -117,8 +117,8 @@
 
         function enoughMat(produit) {
             console.log("le bouton marche")
-            for (let materiau in recette[produit]) {
-                if (recette[produit[materiau]] > ressourceBase[materiau]) {
+            for (let material in recette[produit]) {
+                if (recette[produit][material] > ressourceBase[material]) {
                     console.log("pas assez !")
                     return false;
                 }
